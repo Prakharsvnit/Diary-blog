@@ -6,7 +6,7 @@ from flask import render_template,redirect,url_for,request, jsonify
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = Falseo
 db  = SQLAlchemy(app)
 
 class Note(db.Model):
@@ -72,6 +72,16 @@ def create_note():
         db.session.commit()
 
         return redirect(url_for('all_posts'))
+
+@app.route("/all/JSON")
+def postsJSON():
+    posts = Note.query.all()
+    return jsonify(posts=[p.serialize for p in posts])
+
+@app.route("/post/<int:post_id>/JSON")
+def entryJSON(post_id):
+    entry = Note.query.filter_by(id=post_id).one()   
+    return jsonify(entry.serialize)
 
 if __name__ == "__main__":
     db.create_all()
