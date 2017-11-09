@@ -6,7 +6,7 @@ from flask import render_template,redirect,url_for,request, jsonify
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = Falseo
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db  = SQLAlchemy(app)
 
 class Note(db.Model):
