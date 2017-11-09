@@ -7,8 +7,6 @@ from flask import render_template,redirect,url_for,request, jsonify
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Password@localhost/entry'
-
 db  = SQLAlchemy(app)
 
 class Note(db.Model):
