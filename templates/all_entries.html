@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+   $.get("http://127.0.0.1:5000/all/JSON",function(data, status){
+      alert(data);
+   }); 
+});
+</script>
+  {% block content %}
+  <a style="float:right;margin-right: 50px;" class="btn btn-primary btn-lg" href="/add">Add</a>
+    {% for post in posts %}
+      <div class = "post_style post-preview">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+          <a href="{{ url_for('post', post_id=post.id) }}">
+            <h2>{{ post.title }}</h2>
+            <br>
+            <p>{{ post.body }}</p>
+          </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  {% endblock %}

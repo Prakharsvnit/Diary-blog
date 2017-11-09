@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+	<a style="float:right;margin-right: 50px;" class="btn btn-primary btn-lg" href="/add">Add</a>
+	<a style="float:right;margin-right: 50px;" class="btn btn-primary btn-lg" href="/all">Previous</a>
+      <div class = "post_style post-preview">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+          <a href="{{ url_for('post', post_id=post.id) }}">
+            <h2>{{ post.title }}</h2>
+            <br>
+            <p>{{ post.body }}</p>
+          </div>
+          </a>
+        </div>
+
+<form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+     <input type="hidden" name="_method" value="DELETE" />
+     <input type="submit" class="btn btn-primary btn-lg" value="Delete" />
+</form>
+<form action="{{ url_for('edit_post', post_id=post.id) }}">
+     <input type="submit" class="btn btn-primary btn-lg" value="Edit" />
+</form>
+
+      </div>
+{% endblock %}
+
+
