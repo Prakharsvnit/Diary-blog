@@ -1,0 +1,23 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+flask = "==0.10.1"
+flask-sqlalchemy = "==2.1"
+gunicorn = "==19.4.5"
+itsdangerous = "==0.24"
+"jinja2" = "==2.8"
+markupsafe = "==0.23"
+"psycopg2" = "==2.6.1"
+sqlalchemy = "==1.0.12"
+werkzeug = "==0.11.9"
+flask-migrate = "==1.8.0"

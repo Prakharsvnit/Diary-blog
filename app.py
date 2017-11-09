@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template,redirect,url_for,request, jsonify
+#from flask.ext.heroku import Heroku
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Password@localhost/entry'
+#heroku = Heroku(app)
 db  = SQLAlchemy(app)
 
 class Note(db.Model):
@@ -70,4 +72,5 @@ def create_note():
         return redirect(url_for('all_posts'))
 
 if __name__ == "__main__":
-	app.run()
+#app.debug = "True"
+    app.run()
